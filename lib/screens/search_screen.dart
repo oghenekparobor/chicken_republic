@@ -40,6 +40,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
     var search = ModalRoute.of(context).settings.arguments as dynamic;
 
     return Scaffold(
+      backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       appBar: AppBar(
         iconTheme: Theme.of(context).iconTheme,
         backgroundColor: Colors.transparent,

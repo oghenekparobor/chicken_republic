@@ -25,7 +25,8 @@ class _ProductsGridState extends State<ProductsGrid> {
   Future<void> initMeals() async {
     try {
       if (widget.category == null) {
-        await Provider.of<Meals>(context, listen: false).loadAllMealsFromMemory();
+        await Provider.of<Meals>(context, listen: false)
+            .loadAllMealsFromMemory();
       } else {
         Provider.of<Meals>(context).loadCategorizedMeals(widget.category);
       }
@@ -52,11 +53,14 @@ class _ProductsGridState extends State<ProductsGrid> {
     }
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
+      color: Color.fromRGBO(245, 245, 245, 1),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: .6,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
         ),
         itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
           value: meals[i],

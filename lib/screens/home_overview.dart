@@ -43,7 +43,7 @@ class _HomeOverviewState extends State<HomeOverview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: _drawerState,
+      backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       body: ShowCaseWidget(
         builder: Builder(
           builder: (ctx) =>
@@ -275,7 +275,7 @@ class _MyAppBarState extends State<MyAppBar> {
         ),
       ],
       bottom: PreferredSize(
-        preferredSize: _show ? Size.fromHeight(105) : Size.fromHeight(52),
+        preferredSize: _show ? Size.fromHeight(110) : Size.fromHeight(50),
         child: Column(
           children: [
             AnimatedContainer(
@@ -291,7 +291,7 @@ class _MyAppBarState extends State<MyAppBar> {
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 12),
                     height: 52,
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                       border: Border.all(width: 1, color: Colors.grey),
                       borderRadius: BorderRadius.circular(20),
@@ -316,7 +316,7 @@ class _MyAppBarState extends State<MyAppBar> {
               description: 'Click to view all meals in a category',
               child: Container(
                 width: double.infinity,
-                height: 52,
+                height: 50,
                 child: Consumer<Categories>(
                   builder: (ctx, categories, child) => ListView(
                     scrollDirection: Axis.horizontal,

@@ -2,13 +2,14 @@ import 'dart:math';
 
 import 'package:chicken_republic/providers/orders.dart';
 import 'package:chicken_republic/screens/orders_screen.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter_clipboard_manager/flutter_clipboard_manager.dart';
+// import 'package:flutter_clipboard_manager/flutter_clipboard_manager.dart';
 
 import '../providers/orders.dart' as i;
 import '../views/my_flutter_app_icons.dart';
@@ -25,12 +26,7 @@ class OrderItem extends StatefulWidget {
 class _OrderItemState extends State<OrderItem> {
   var _expanded = false;
   showOrderQr(BuildContext ctx, String orderid) {
-    showDialog(
-      context: ctx,
-      child: QRImage(
-        orderid: orderid,
-      ),
-    );
+    showDialog(context: ctx, child: QRImage(orderid: orderid));
   }
 
   @override
@@ -232,7 +228,7 @@ class QRImage extends StatelessWidget {
     return Center(
       child: Container(
         width: 170,
-        height: MediaQuery.of(context).size.height * .25,
+        height: MediaQuery.of(context).size.height * .3,
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
             color: Colors.black38,
@@ -259,28 +255,25 @@ class QRImage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                          padding: const EdgeInsets.all(12),
-                          margin: const EdgeInsets.all(5),
-                          child: Text(
-                            orderid,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          )),
+                        padding: const EdgeInsets.all(12),
+                        margin: const EdgeInsets.all(5),
+                        child: Text(
+                          orderid,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       IconButton(
                         icon: const Icon(Icons.content_copy),
-                        onPressed: () {
-                          FlutterClipboardManager.copyToClipBoard(orderid)
-                              .then((result) {
-                            Navigator.of(context).pop();
-                            Fluttertoast.showToast(
-                              msg: 'Copied to clipboad',
-                              gravity: ToastGravity.BOTTOM,
-                              textColor: Colors.white,
-                              backgroundColor: Colors.black45,
-                              toastLength: Toast.LENGTH_SHORT,
-                            );
-                          });
-                        },
-                      )
+                        onPressed: () => FlutterClipboard.copy(orderid).then(
+                          (value) => Fluttertoast.showToast(
+                            msg: 'Copied to clipboad',
+                            gravity: ToastGravity.BOTTOM,
+                            textColor: Colors.white,
+                            backgroundColor: Colors.black45,
+                            toastLength: Toast.LENGTH_SHORT,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

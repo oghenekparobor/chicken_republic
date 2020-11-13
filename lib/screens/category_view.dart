@@ -11,6 +11,7 @@ class CategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     var category = ModalRoute.of(context).settings.arguments as String;
     return Scaffold(
+      backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       appBar: AppBar(
         iconTheme: Theme.of(context).iconTheme,
         backgroundColor: Colors.transparent,
