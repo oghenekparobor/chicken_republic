@@ -55,7 +55,9 @@ class _ProductItemState extends State<ProductItem>
         'color': Colors.white,
       }).then((value) {
         if (value != null) {
+          // ignore: deprecated_member_use
           Scaffold.of(context).hideCurrentSnackBar();
+          // ignore: deprecated_member_use
           Scaffold.of(context).showSnackBar(
             SnackBar(
               content: const Text('Added to Cart'),
@@ -120,7 +122,7 @@ class _ProductItemState extends State<ProductItem>
                           onTap: () {
                             showDialog(
                               context: context,
-                              child: AddToCart(
+                              builder: (context) => AddToCart(
                                 mealid: widget.meal.id,
                                 color: Colors.white,
                                 cxt: context,

@@ -26,7 +26,7 @@ class OrderItem extends StatefulWidget {
 class _OrderItemState extends State<OrderItem> {
   var _expanded = false;
   showOrderQr(BuildContext ctx, String orderid) {
-    showDialog(context: ctx, child: QRImage(orderid: orderid));
+    showDialog(context: ctx, builder: (ctx)=> QRImage(orderid: orderid));
   }
 
   @override

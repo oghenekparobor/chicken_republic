@@ -205,7 +205,7 @@ class _OrderButtonState extends State<OrderButton> {
   }) {
     showDialog(
       context: context,
-      child: Center(
+      builder: (context)=> Center(
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height * .4,
